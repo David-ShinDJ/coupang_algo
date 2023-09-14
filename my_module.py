@@ -1,9 +1,8 @@
 class Item:
-    def __init__(self, location, priority):
+    def __init__(self, id, location, priority):
+        self.id = id
         self.location = location
         self.priority = priority
-        self.id = id(self)
-
 
     def move_location(self, newLocation):
         knewLocation = self.location
@@ -11,10 +10,13 @@ class Item:
         print(f"Location {knewLocation} Changed to {self.location}")
 
     def update_priority(self, newPriority):
+        print("Hello")
+
+
 
 class OrderList:
     def __init__(self, items):
-        self.items = [Item]
+        self.items = items
 
     def add(self, item):
         self.items.append(item)
@@ -26,7 +28,5 @@ class OrderList:
     def read(self):
         for item in self.items:
             print(f"{item.location}")
-
-    def update(self, ):
 
 
