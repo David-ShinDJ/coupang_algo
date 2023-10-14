@@ -1,26 +1,58 @@
-import uuid  # uuid 모듈을 추가해야 합니다.
+import hash
+# 출고시스템부터 설계 -> 집품 최소이동 단위로 설계하기!
 
-# 시스템 설계 -> 원하는 기능 구현 -> 실제쿠팡에서 집품을 하는 알고리즘을 기준으로 설계
-# 모듈설계 -> 각자의 독립적인 모듈을 생성후에 연결하는방식으로 설계
-# 데이터설계 -> 관계형데이터베이스기반 -> 더미데이터생성후 유닛테스트
-# 각 설계를 어떻게 연결할지에 대해서 설계필요
-# @ 실제존재하는것 기반으로 설계진행 ! 확장성을 고려해서 설계진행!
+# 직원
+class Employee:
+    def __init__(self, name, employee_number, occupation):
+        self.name = name
+        self.employee_number = employee_number
+        self.occupation = occupation
 
+# PDA
+
+class PDA:
+    def __init__(self, machine_number, work_type):
+        self.machine_number = machine_number
+        self.work_type = work_type
 
 class Shelf:
     def __init__(self, sector, number):
         self.sector = sector  # A~C
-        self.number = number  # 1~5
-        self.items = []  # item 4개
+        self.number = number  # 1~15
+        self.products = []  # item max 28
 
-    def add_item(self, item):
-        self.items.append(item)
+    def add_item(self, product):
+        self.products.append(product)
 
-class Item:
-    def __init__(self, id, name, price):
-        self.id = id
+class Product:
+    def __init__(self, name, price):
         self.name = name
+        self.barcode = hash.hash_name(name)
         self.price = price
+
+class Order:
+    def __init__(self, product, time, region):
+        self.product = product
+        self.time = time
+        self.region = region
+
+# TODO: Order 들어올떄 마감값에 따라서 리스트앞에 넣는 함수 구현하기
+class OrderList:
+    def __init__(self):
+        self.orders = []
+
+    def add_order(self, order):
+        self.orders.append(order)
+
+    def remove_order(self, order):
+        if order in self.orders:
+            self.orders.remove(order)
+            print(f"{order.product.name} is removed")
+
+
+
+
+
 class PickList:
     def __init__(self):
         self.items = []
@@ -37,3 +69,6 @@ class PickList:
     def read(self):
         for item in self.items:
             print(f"{item.name}")
+
+
+
