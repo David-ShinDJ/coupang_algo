@@ -1,9 +1,10 @@
-import hash
+import hash, my_module
 
-hashed_name = hash.hash_name("신동준")
-hashed_name2 = hash.hash_name("김남일")
-print(hashed_name)
-print(hashed_name2)
+product1 = my_module.Product("상품", 23000)
+order1 = my_module.Order(product1, "경기도")
+print(order1.time)
+
+
 # # Shelf 객체 생성
 # shelf_a = Shelf("A", 1)
 # shelf_a2 = Shelf("A", 2)

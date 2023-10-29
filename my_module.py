@@ -1,4 +1,4 @@
-import hash
+import hash, time
 # 출고시스템부터 설계 -> 집품 최소이동 단위로 설계하기!
 
 # 직원
@@ -31,12 +31,16 @@ class Product:
         self.price = price
 
 class Order:
-    def __init__(self, product, time, region):
+    def __init__(self, product, region):
         self.product = product
-        self.time = time
+        self.time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         self.region = region
 
 # TODO: Order 들어올떄 마감값에 따라서 리스트앞에 넣는 함수 구현하기
+# TODO: First In First Out 구현하기위해서 hip 구조를 사용?
+# sort_order function Order.time값에 따라 앞에 넣어주는함수 힙구조?
+# 
+
 class OrderList:
     def __init__(self):
         self.orders = []
@@ -48,6 +52,9 @@ class OrderList:
         if order in self.orders:
             self.orders.remove(order)
             print(f"{order.product.name} is removed")
+
+    def sort_order(self):
+        self.orders
 
 
 
@@ -69,6 +76,3 @@ class PickList:
     def read(self):
         for item in self.items:
             print(f"{item.name}")
-
-
-
