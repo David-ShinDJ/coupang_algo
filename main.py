@@ -1,8 +1,30 @@
-import hash, my_module
+import time
 
-product1 = my_module.Product("상품", 23000)
+import hash, my_module
+import time
+product1 = my_module.Product("상품5", 23000)
+time.sleep(1)
+product2 = my_module.Product("상품1", 15500)
+time.sleep(1)
+product3 = my_module.Product("상품4", 15500)
+time.sleep(1)
+product4 = my_module.Product("상품3", 15500)
 order1 = my_module.Order(product1, "경기도")
+time.sleep(1)
+order2 = my_module.Order(product2, "경기도")
+order3 = my_module.Order(product3, "경기도")
+order4 = my_module.Order(product4, "경기도")
 print(order1.time)
+order_list = my_module.OrderList()
+order_list.add_order(order1)
+order_list.add_order(order2)
+order_list.add_order(order3)
+order_list.add_order(order4)
+
+order_list.sort_order()
+order_list.get_order_list()
+
+print(order_list.orders[0].time, order_list.orders[1].time)
 
 
 # # Shelf 객체 생성
