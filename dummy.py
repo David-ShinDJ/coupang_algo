@@ -24,10 +24,8 @@ def generate_dummy_order(products):
     for product in products:
         order_product = product
         order_region = "서울"
-
         order = my_module.Order(order_product, order_region)
-        order.time = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(round(random.uniform(int(time.time()) - 3600 * 12, int(time.time())), 0)))
+        order.time = random.uniform(int(time.time()) - 3600 * 12, int(time.time()))
         dummy_order.append(order)
-
     return dummy_order
 

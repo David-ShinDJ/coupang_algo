@@ -12,8 +12,5 @@ for order in dummy_orders:
     order_list.add_order(order)
 
 order_list.sort_order()
-
 print(len(order_list.orders))
-
-for order in order_list.orders:
-    print(order.time)
+order_list.get_order_time()

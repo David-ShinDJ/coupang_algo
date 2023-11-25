@@ -10,9 +10,7 @@ def string_to_timestamp(date_string):
 
     return int(timestamp)
 
-
 # 예제 사용
 date_string = "2023-11-15 12:30:45"
 timestamp_value = string_to_timestamp(date_string)
 print(timestamp_value)
-print(int(time.time()))

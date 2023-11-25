@@ -33,25 +33,13 @@ class Product:
 class Order:
     def __init__(self, product, region):
         self.product = product
-        self.time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        self.time = time.time()
         self.region = region
 
 
 
 # TODO: Order 들어올떄 마감값에 따라서 리스트앞에 넣는 함수 구현하기
-# TODO: First In First Out 구현하기위해서 hip 구조를 사용?
 # sort_order function Order.time값에 따라 앞에 넣어주는함수 힙구조?
-# 
-def string_to_timestamp(date_string):
-    # 주어진 문자열을 시간 구조체로 변환
-    time_struct = time.strptime(date_string, "%Y-%m-%d %H:%M:%S")
-
-    # 시간 구조체를 timestamp로 변환
-    timestamp = time.mktime(time_struct)
-
-    return int(timestamp)
-def get_timestamp(order):
-    return string_to_timestamp(order.time)
 class OrderList:
     def __init__(self):
         self.orders = []
@@ -66,13 +54,15 @@ class OrderList:
 
 
     def sort_order(self):
-        sorted_order = sorted(self.orders, key=get_timestamp)
-        print(sorted_order)
+        self.orders = sorted(self.orders, key=lambda x: x.time)
 
     def get_order_list(self):
         for order in self.orders:
             print(order.product.name)
 
+    def get_order_time(self):
+        for order in self.orders:
+            print(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(order.time)))
 
 
 class PickList:
