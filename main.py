@@ -2,15 +2,17 @@ import dummy, my_module
 # Product dummy 100 개 생성
 
 
-dummy_products = dummy.generate_dummy_product(200)
-dummy_orders = dummy.generate_dummy_order(dummy_products)
 
-
+products = dummy.generate_dummy_product(200)
+product = my_module.Product("아이폰", 1240000)
+order = my_module.Order(product, "서울")
 order_list = my_module.OrderList()
+order_list.add_order(order)
 
-for order in dummy_orders:
-    order_list.add_order(order)
 
-order_list.sort_order()
-print(len(order_list.orders))
-order_list.get_order_time()
+shelf = my_module.Shelf("A", 0)
+
+
+
+
+
