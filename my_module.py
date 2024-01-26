@@ -44,10 +44,10 @@ class PDA:
         self.machine_number = machine_number
         self.work_type = work_type
 
+#TODO: 재고에 따른 product data 생성해서 Shelf 분배하기!
 class Inventory:
     def __init__(self, product_data):
         self.product_data = product_data
-        
 
 class Shelf:
     def __init__(self, sector, number):
@@ -77,7 +77,7 @@ class Order:
 class OrderList:
     def __init__(self):
         self.orders = []
-
+        
     def add_order(self, order):
         self.orders.append(order)
 
@@ -98,6 +98,3 @@ class OrderList:
     def get_order_name(self):
         for order in self.orders:
             print(order.product.name)
-
-class PickList:
-
