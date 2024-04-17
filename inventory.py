@@ -26,6 +26,11 @@ class InventoryData:
             print(f"{product_name} 지워졌습니다")
         else:
             print(f"{product_name} 상품이 존재하지않습니다 ")
+    def print_inventory(self):
+        if not self.inventory:
+            print("Inventory is empty.")
+        for product_name, count in self.inventory.items():
+            print(f"Product: {product_name}, Count: {count}")
 
 # Example usage
 inventory = InventoryData(['Apple', 'Banana'], [10, 20])

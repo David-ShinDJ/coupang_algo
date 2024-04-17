@@ -34,8 +34,14 @@ print_object_properties(some_order2)
 
 
 ## TODO: LogisticCenter 생성하기 모든 클래스 연결해서 main 작성하기
+product_names = [product.name for product in products]
+product_counts = [1 for _ in product_names]
+inventory_data = inventory.InventoryData(product_names, product_counts)
+inventory_data.print_inventory()
 
-inventory_data = inventory.InventoryData
+workers = worker.Worker(['아무개', '아무개2', "아무개3", "아무개4", "아무개5"], ['1', '2', '3', '4', '5'], ['Ps', 'Packer', "Administer", "Deliver", "Picker"])
+logistics_center = logistics_center.LogisticCenter(inventory_data, "평택", workers)
+
 
 
 
